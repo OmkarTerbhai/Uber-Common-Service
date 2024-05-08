@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'com.uber'
-version = '0.0.1-SNAPSHOT'
+version = '1.0-SNAPSHOT'
 
 java {
 	sourceCompatibility = '17'
@@ -19,12 +19,22 @@ configurations {
 }
 
 publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			artifact bootJar
+	publishing {
+		publications {
+			mavenJava(MavenPublication) {
+				versionMapping {
+					usage('java-api') {
+						fromResolutionOf('runtimeClasspath')
+					}
+					usage('java-runtime') {
+						fromResolutionResult()
+					}
+
+					from components.java
+				}
+			}
 		}
 	}
-
 	repositories {
 		maven {
 			url = uri('/mnt/AE8C67CE8C67901F/SpringbootBootCamp/Uber/common')
@@ -45,6 +55,16 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
+
+
+tasks.withType(GenerateModuleMetadata).configureEach {
+	// The value 'enforced-platform' is provided in the validation
+	// error message you got
+	suppressedValidationErrors.add('enforced-platform')
+}
+
+
 
 tasks.named('test') {
 	useJUnitPlatform()

@@ -3,10 +3,11 @@
   <groupId>com.uber</groupId>
   <artifactId>common</artifactId>
   <versioning>
-    <latest>0.0.1-SNAPSHOT</latest>
+    <latest>1.0-SNAPSHOT</latest>
     <versions>
       <version>0.0.1-SNAPSHOT</version>
+      <version>1.0-SNAPSHOT</version>
     </versions>
-    <lastUpdated>20240506094044</lastUpdated>
+    <lastUpdated>20240508142443</lastUpdated>
   </versioning>
 </metadata>
