@@ -3,6 +3,7 @@ package com.uber.common.entities;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import lombok.*;
 import java.util.List;
 
@@ -20,4 +21,7 @@ public class Driver extends CommonEntity {
 
     @OneToMany(mappedBy = "driver", cascade = CascadeType.PERSIST)
     private List<Review> driverReviews;
+
+    @OneToOne
+    private Car car;
 }
