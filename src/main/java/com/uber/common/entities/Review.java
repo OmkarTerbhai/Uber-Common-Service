@@ -8,12 +8,18 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Review extends CommonEntity {
-    @Column
-    public String content;
+    @Column(nullable = false)
+    private String content;
 
-    @ManyToOne
-    private Rider rider;
+    private Double rating;
 
-    @ManyToOne
-    private Driver driver;
+    @OneToOne(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @JoinColumn(nullable = false)
+    private Booking booking; // we have defined a 1:1 relationship between booking and review
+
+    @Override
+    public String toString() {
+        return "Review: " + this.content + " " + this.rating + " " + " booking: " + this.booking.getId() + " " + this.createdAt;
+    }
+
 }
