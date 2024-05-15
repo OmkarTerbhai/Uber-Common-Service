@@ -25,8 +25,7 @@ public class Car extends CommonEntity{
     @Enumerated(value = EnumType.STRING)
     private CarType carType;
 
-    @ManyToOne
-    private Color color;
+
 
     @OneToOne
     private Driver driver;

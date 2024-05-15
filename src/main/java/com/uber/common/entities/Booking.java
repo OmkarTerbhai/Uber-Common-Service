@@ -13,18 +13,15 @@ import java.sql.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-//@Table(indexes = {
-//        @Index(columnList = "driver_id")
-//})
 public class Booking extends CommonEntity{
 
     @Enumerated(value = EnumType.STRING)
     private BookingStatus bookingStatus;
 
-    @Temporal(value = TemporalType.TIMESTAMP)
+    @Temporal(value = TemporalType.DATE)
     private Date startTime;
 
-    @Temporal(value = TemporalType.TIMESTAMP)
+    @Temporal(value = TemporalType.DATE)
     private Date endTime;
 
     private Long totalDistance;
