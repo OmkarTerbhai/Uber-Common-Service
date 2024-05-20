@@ -16,7 +16,15 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Driver extends CommonEntity {
+public class Driver extends CommonEntity{
+
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
+
+    @Column
     private String name;
 
     @Column(nullable = false, unique = true)
