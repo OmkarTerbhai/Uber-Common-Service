@@ -4,6 +4,8 @@ import com.uber.common.utils.BookingStatus;
 import com.uber.common.utils.DriverApprovalStatus;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import java.sql.Date;
 
@@ -33,9 +35,11 @@ public class Booking extends CommonEntity{
     private Rider rider;
 
     @OneToOne
+    @Cascade(value = CascadeType.ALL)
     private ExactLocation startLocation;
 
     @OneToOne
+    @Cascade(value = CascadeType.ALL)
     private ExactLocation endLocation;
 
 }
